@@ -11,6 +11,7 @@ devPrefix = "??"
 
 logChannelId = <CHANNEL ID HERE AS INT>
 failCmdChannelId = <CHANNEL ID HERE AS INT>
+botStatusChannelId = <CHANNEL ID HERE AS INT>
 
 # Playing -> activity = discord.Game(name="!help")
 # Streaming -> activity = discord.Streaming(name="!help", url="twitch_url_here")

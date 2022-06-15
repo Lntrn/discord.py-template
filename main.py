@@ -96,7 +96,7 @@ async def on_guild_join(guild):
         text = f"{colour}"
     )
 
-    await bot.get_channel(791216444548579339).send(embed = embed) 
+    await bot.get_channel(config.botStatusChannelId).send(embed = embed) 
 
     # try:
     await bot.get_user(guild.owner_id).send(f"Thanks for adding me to your server! Please respond with what you would like my prefix to be within {guild.name}. You can change this later using the `prefix` command.")
