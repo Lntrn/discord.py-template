@@ -9,6 +9,7 @@ Things you will need to change to make the bot work, * = suggested, not required
 - devPrefix*
 - logChannelId
 - failCmdChannelId
+- botStatusChannelId
 
 ./.env
 - LIVETOKEN
