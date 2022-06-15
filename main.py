@@ -84,20 +84,6 @@ async def on_guild_remove(guild):
 @bot.event
 async def on_guild_join(guild):
 
-    colour = 0x198754
-
-    embed = discord.Embed(
-        title = "New Server",
-        color = colour,
-        description = f"**Server Name:** {guild.name}\n**Server Owner:** <@{guild.owner_id}>\n**Member Count:** {guild.member_count}"
-    ).set_thumbnail(
-        url = guild.icon_url
-    ).set_footer(
-        text = f"{colour}"
-    )
-
-    await bot.get_channel(config.botStatusChannelId).send(embed = embed) 
-
     # try:
     await bot.get_user(guild.owner_id).send(f"Thanks for adding me to your server! Please respond with what you would like my prefix to be within {guild.name}. You can change this later using the `prefix` command.")
 
@@ -142,6 +128,20 @@ async def on_guild_join(guild):
         json.dump(data, outfile, indent = 4)
 
     print("Successfully added a new server to serverInfo.json!")
+
+    colour = 0x198754
+
+    embed = discord.Embed(
+        title = "New Server",
+        color = colour,
+        description = f"**Server Name:** {guild.name}\n**Server Owner:** <@{guild.owner_id}>\n**Member Count:** {guild.member_count}"
+    ).set_thumbnail(
+        url = guild.icon_url
+    ).set_footer(
+        text = f"{colour}"
+    )
+
+    await bot.get_channel(config.botStatusChannelId).send(embed = embed) 
 
 
 @bot.event
