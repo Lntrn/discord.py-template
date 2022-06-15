@@ -58,6 +58,7 @@ async def on_ready():
 
         for guild in bot.guilds:
             print(guild.name)
+            # Update serverInfo.json on bot start
 
     print(f"{bot.user} has connected to Discord!")
 
@@ -94,7 +95,7 @@ async def on_guild_join(guild):
             return False
 
     while True:
-        x = await bot.wait_for("message", timeout = 60, check = check)
+        x = await bot.wait_for("message", timeout = 120, check = check)
 
         if len(x.content) < 4:
             await bot.get_user(guild.owner_id).send(f"The prefix for {guild.name} is now `{x.content}`")
@@ -105,7 +106,7 @@ async def on_guild_join(guild):
                 "ownerID": guild.owner_id,
                 "prefix": x.content,
                 "settings": {
-                "limited": False
+                    "limited": False
                 }
             }}
 
