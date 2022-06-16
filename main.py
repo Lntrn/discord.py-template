@@ -192,7 +192,9 @@ async def on_message(message):
         else:
             return print(f"couldnt find a prefix in {server['name']}")
 
+    # if command author's id is in the array
     if message.author.id in [180147146748723200]:
+        #pick a random number from this array and if it equals 1 give a sassy response and stop, else it works properly
         if random.choice([1, 1, 2]) == 1:
             await bot.get_channel(message.channel.id).send(f"try again bitch")
             return
