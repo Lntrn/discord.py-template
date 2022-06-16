@@ -14,3 +14,8 @@ Things you will need to change to make the bot work, * = suggested, not required
 ./.env
 - LIVETOKEN
 - DEVTOKEN
+
+
+TODO
+./main.py
+- line 61, refresh info on every server in serverInfo.json every bot restart
