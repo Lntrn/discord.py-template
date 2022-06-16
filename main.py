@@ -62,7 +62,7 @@ async def on_ready():
 
     print(f"{bot.user} has connected to Discord!")
 
-    await bot.get_channel(config.botStatusChannelId).send(f"bot online\nVersion: `{config.version}`")
+    await bot.get_channel(config.botStatusChannelId).send(f"> bot online\n> Version: `{config.version}`")
 
 @bot.event
 async def on_guild_remove(guild):
@@ -196,7 +196,7 @@ async def on_message(message):
     if message.author.id in config.blacklist:
         #pick a random number from this array and if it equals 1 give a sassy response and stop, else it works properly
         if random.choice([1, 1, 2]) == 1:
-            await bot.get_channel(message.channel.id).send(f"try again bitch")
+            await bot.get_channel(message.channel.id).send(f"nope")
             return
 
     message.content = message.content.strip()
