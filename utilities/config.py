@@ -1,5 +1,7 @@
 import discord
 
+version = "0.0.1"
+
 whitelist = [<DEV USER ID HERE AS INT>]
 
 blacklist = [<USER ID HERE AS INT>]

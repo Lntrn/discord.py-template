@@ -13,26 +13,24 @@ async def findServerInfo(bot, _id):
     return serverInfo.get(str(_id))
 
 async def logCmd(discord, config, ctx, bot, args):
-    log = config.logChannelId
     argsStr = " ".join(args)
 
     if ctx.guild == None:
-        guildmsg = f"**Guild Name**: {ctx.guild}\n"
+        guildmsg = f"**Guild Name**: {ctx.guild}"
     else:
-        guildmsg = f"**Guild Name**: {ctx.guild}\n**Guild ID**: {ctx.guild.id}\n"
+        guildmsg = f"**Guild Name**: {ctx.guild}\n**Guild ID**: {ctx.guild.id}"
 
     
 
     embed = discord.Embed(
         color = 0x2AF4C8,
         title = f"Command Used",
-        description = f"**Command Used**: `{ctx.command}`\n**Args**:\n> {argsStr}\n**User**: <@{ctx.author.id}>\n{guildmsg}**Channel**: <#{ctx.channel.id}>"
+        description = f"**Command Used**: `{ctx.command}`\n**Args**:\n> {argsStr}\n**User**: <@{ctx.author.id}\n{guildmsg}\n**Channel**: <#{ctx.channel.id}>"
     )
 
-    await bot.get_channel(log).send(embed = embed)
+    await bot.get_channel(config.logChannelId).send(embed = embed)
 
 async def cmdFail(discord, config, ctx, bot, args):
-    log = config.failCmdChannelId
     argsStr = " ".join(args)
 
     embed = discord.Embed(
@@ -41,7 +39,7 @@ async def cmdFail(discord, config, ctx, bot, args):
         description = f"Command Used**: `{ctx.command}`\nArgs:\n> {argsStr}\nUser: <@{ctx.author.id}>\nServer: {ctx.guild}\nChannel: <#{ctx.channel.id}>\nReason for failuren> Coming soon.."
     )
 
-    await bot.get_channel(log).send(embed = embed)
+    await bot.get_channel(config.failCmdChannelId).send(embed = embed)
 
 
 async def processArgs(args):

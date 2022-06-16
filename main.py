@@ -62,7 +62,7 @@ async def on_ready():
 
     print(f"{bot.user} has connected to Discord!")
 
-    await bot.get_channel(791216444548579339).send(f"bot online")
+    await bot.get_channel(config.botStatusChannelId).send(f"bot online\nVersion: `{config.version}`")
 
 @bot.event
 async def on_guild_remove(guild):
@@ -79,7 +79,7 @@ async def on_guild_remove(guild):
         text = f"{colour}"
     )
 
-    await bot.get_channel(791216444548579339).send(embed = embed) 
+    await bot.get_channel(config.botStatusChannelId).send(embed = embed) 
 
 
 @bot.event
@@ -193,7 +193,7 @@ async def on_message(message):
             return print(f"couldnt find a prefix in {server['name']}")
 
     # if command author's id is in the array
-    if message.author.id in [180147146748723200]:
+    if message.author.id in config.blacklist:
         #pick a random number from this array and if it equals 1 give a sassy response and stop, else it works properly
         if random.choice([1, 1, 2]) == 1:
             await bot.get_channel(message.channel.id).send(f"try again bitch")
@@ -204,7 +204,7 @@ async def on_message(message):
 
         
     if message.author.id in config.blacklist:
-        await bot.get_channel(message.channel.id).send(f"<@{message.author.id}>, you have been blacklisted from using this bot. If you believe this is a mistake then fuck you.")
+        await bot.get_channel(message.channel.id).send(f"<@{message.author.id}>, you have been blacklisted from using this bot.")
         return
 
     # Process the message as a command, you must run this if you want to use @bot.commands with the on message event
